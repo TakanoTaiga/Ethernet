@@ -123,7 +123,6 @@ EthernetServer::operator bool()
 #if 0
 void EthernetServer::statusreport()
 {
-	Serial.printf("EthernetServer, port=%d\n", _port);
 	for (uint8_t i=0; i < MAX_SOCK_NUM; i++) {
 		uint16_t port = server_port[i];
 		uint8_t stat = Ethernet.socketStatus(i);
@@ -147,8 +146,6 @@ void EthernetServer::statusreport()
 			default: name = "???";
 		}
 		int avail = Ethernet.socketRecvAvailable(i);
-		Serial.printf("  %d: port=%d, status=%s (0x%02X), avail=%d\n",
-			i, port, name, stat, avail);
 	}
 }
 #endif

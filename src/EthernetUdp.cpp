@@ -74,7 +74,6 @@ int EthernetUDP::beginPacket(const char *host, uint16_t port)
 int EthernetUDP::beginPacket(IPAddress ip, uint16_t port)
 {
 	_offset = 0;
-	//Serial.printf("UDP beginPacket\n");
 	return Ethernet.socketStartUDP(sockindex, rawIPAddress(ip), port);
 }
 
@@ -90,7 +89,6 @@ size_t EthernetUDP::write(uint8_t byte)
 
 size_t EthernetUDP::write(const uint8_t *buffer, size_t size)
 {
-	//Serial.printf("UDP write %d\n", size);
 	uint16_t bytes_written = Ethernet.socketBufferData(sockindex, _offset, buffer, size);
 	_offset += bytes_written;
 	return bytes_written;
@@ -191,7 +189,6 @@ int EthernetUDP::read(unsigned char *buffer, size_t len)
 		}
 		if (got > 0) {
 			_remaining -= got;
-			//Serial.printf("UDP read %d\n", got);
 			return got;
 		}
 	}
